@@ -1,7 +1,16 @@
 <?php 
 $pageTitle = "Unique T-shirts designed by a frog";
 $section = "home";
-include('inc/header.php'); ?>
+include('inc/header.php');
+?>
+<script type="text/javascript">
+		function addShirt(){
+			var list = document.getElementById('latest_pro').innerHTML; 
+			var list = list + '<li>><a><img src=""><p></p></a></li>';
+			document.getElementById('latest_pro').innerHTML = list;
+
+	}
+	</script>
 		<div class="section banner">
 
 			<div class="wrapper">
@@ -22,11 +31,13 @@ include('inc/header.php'); ?>
 			<div class="wrapper">
 
 				<h2>Mike&rsquo;s Latest Shirts</h2>
+				<?php
+				if (isset($_GET["login"])){
 
-				<?php include("inc/products.php"); ?>
-				<ul class="products">
+					include("inc/login_form.php");
+				} else { include("inc/products.php"); ?>
+				<ul class="products" id="latest_pro">
 					<?php 
-
 						$total_products = count($products);
 						$position = 0;
 						$list_view_html = "";
@@ -36,12 +47,20 @@ include('inc/header.php'); ?>
 								$list_view_html = get_list_view_html($product_id,$product) . $list_view_html;
 							}
 						}
-						echo $list_view_html;
-					?>								
+						echo $list_view_html;}
+						
+					?>				
+
 				</ul>
+				<?php if(isset($_POST["Username"]))
+						{
+							include("inc/add_form.php");
+						}?>
+						<script type="text/javascript" src="js/DOMm.js"></script>
 
 			</div>
 
 		</div>
+
 
 <?php include('inc/footer.php') ?>
