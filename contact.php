@@ -67,7 +67,7 @@ include('inc/header.php'); ?>
 
                 <p>I&rsquo;d love to hear from you! Complete the form to send me an email.</p>
 
-               <?php include('inc/mail_form.php');?>
+               <?php include('inc/mail_from.php');?>
 
             <?php } ?>
 
